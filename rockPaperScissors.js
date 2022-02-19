@@ -8,10 +8,15 @@ function computerPlay() {
 
 
 
-function userPlay() {
+/* function userPlay() {
     let userInput = prompt("(R) for Rock, (P) for paper and (S) for scissors" );
     return userInput.toUpperCase();
     
+}
+ */
+
+let userPlay = () => {
+    return prompt("(R) for Rock, (P) for paper and (S) for scissors");
 }
 
 let userTurn = userPlay();
