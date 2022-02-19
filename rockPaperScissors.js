@@ -24,13 +24,13 @@ let computerTurn = computerPlay();
 
 function gameLogic() {
     //computer wins
-    if (computerPlay() == "R" && userTurn == "SCISSORS") {
+    if (computerTurn == "R" && userTurn == "SCISSORS") {
         return console.log("Computer won, rock beats scissors");
     } 
-    else if (computerPlay() == "P" && userTurn == "ROCK") {
+    else if (computerTurn == "P" && userTurn == "ROCK") {
         return console.log("Computer won, paper beats rock");
     }
-    else if (computerPlay() == "S" && userTurn == "PAPER") {
+    else if (computerTurn == "S" && userTurn == "PAPER") {
         return console.log("Computer won, scissors beat paper");
     }
 
