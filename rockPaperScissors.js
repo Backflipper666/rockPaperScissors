@@ -8,51 +8,51 @@ function computerPlay() {
 
 
 
-/* function userPlay() {
+function userPlay() {
     let userInput = prompt("(R) for Rock, (P) for paper and (S) for scissors" );
     return userInput.toUpperCase();
     
 }
- */
 
-let userPlay = () => {
+
+/* let userPlay = () => {
     return prompt("(R) for Rock, (P) for paper and (S) for scissors");
-}
+} */
 
 let userTurn = userPlay();
 let computerTurn = computerPlay();
 
 function gameLogic() {
     //computer wins
-    if (computerPlay() == "R" && userPlay() == "S") {
+    if (computerPlay() == "R" && userTurn == "SCISSORS") {
         return console.log("Computer won, rock beats scissors");
     } 
-    else if (computerPlay() == "P" && userPlay() == "R") {
+    else if (computerPlay() == "P" && userTurn == "ROCK") {
         return console.log("Computer won, paper beats rock");
     }
-    else if (computerPlay() == "S" && userPlay() == "P") {
+    else if (computerPlay() == "S" && userTurn == "PAPER") {
         return console.log("Computer won, scissors beat paper");
     }
 
     //player wins
-    else if (userTurn == "R" && computerTurn == "S"){
+    else if (userTurn == "ROCK" && computerTurn == "S"){
         return console.log("User won! Rock beats scissors");
     }
-    else if (userTurn == "P" && computerTurn == "R"){
+    else if (userTurn == "PAPER" && computerTurn == "R"){
         return console.log("User won, paper beats rock");
     }
-    else if (userTurn == "S" && computerTurn == "P"){
+    else if (userTurn == "SCISSORS" && computerTurn == "P"){
         return console.log("User won, scissors beat paper");
     }
 
     //draw
-    else if (userTurn == "R" && computerTurn == "R"){
+    else if (userTurn == "ROCK" && computerTurn == "R"){
         return console.log("It's a draw, both chose Rock");
     }
-    else if (userTurn == "P" && computerTurn == "P"){
+    else if (userTurn == "PAPER" && computerTurn == "P"){
         return console.log("It's a draw, both chose Paper");
     }
-    else if (userTurn == "S" && computerTurn == "S"){
+    else if (userTurn == "SCISSORS" && computerTurn == "S"){
         return console.log("It's a draw, both chose Scissors");
     }
 }
