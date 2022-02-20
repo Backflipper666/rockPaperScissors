@@ -13,13 +13,15 @@ function userPlay() {
 }
 
 
-let userTurn = userPlay();
-let computerTurn = computerPlay();
 let userWin;
 let pcWin;
 let draw;
 
 function gameLogic() {
+
+    let userTurn = userPlay();
+    let computerTurn = computerPlay();
+
     //computer wins
     if (computerTurn == "R" && userTurn == "SCISSORS") {
         console.log("Computer won, rock beats scissors");
@@ -99,8 +101,6 @@ function game() {
     let user = 0;
     let drawLocal = 0;
     for (let i = 0; i < 5; i++){
-        computerPlay();
-        userPlay();
         gameLogic()
         if (pcWin == true) pc++;
         else if (userWin == true) user ++;
