@@ -1,4 +1,3 @@
-//simple game
 let choices = ["Rock", "Paper", "Scissors"];
 function computerPlay() {
     let computerChoice = Math.floor(Math.random() * choices.length);
@@ -7,17 +6,12 @@ function computerPlay() {
 }
 
 
-
 function userPlay() {
     let userInput = prompt("(R) for Rock, (P) for paper and (S) for scissors" );
     return userInput.toUpperCase();
     
 }
 
-
-/* let userPlay = () => {
-    return prompt("(R) for Rock, (P) for paper and (S) for scissors");
-} */
 
 let userTurn = userPlay();
 let computerTurn = computerPlay();
@@ -28,84 +22,90 @@ let draw;
 function gameLogic() {
     //computer wins
     if (computerTurn == "R" && userTurn == "SCISSORS") {
-        pcWin = true;
-        return console.log("Computer won, rock beats scissors");
+        console.log("Computer won, rock beats scissors");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+        
     } 
     else if (computerTurn == "P" && userTurn == "ROCK") {
-        pcWin = true;
-        return console.log("Computer won, paper beats rock");
+        console.log("Computer won, paper beats rock");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+        
     }
     else if (computerTurn == "S" && userTurn == "PAPER") {
-        pcWin = true;
-        return console.log("Computer won, scissors beat paper");
+        console.log("Computer won, scissors beat paper");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+        
     }
 
     //player wins
     else if (userTurn == "ROCK" && computerTurn == "S"){
-        userWin = true;
-        return console.log("User won! Rock beats scissors");
+        console.log("User won! Rock beats scissors");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+        
     }
     else if (userTurn == "PAPER" && computerTurn == "R"){
-        userWin = true;
-        return console.log("User won, paper beats rock");
+        console.log("User won, paper beats rock");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+        
     }
     else if (userTurn == "SCISSORS" && computerTurn == "P"){
-        userWin = true;
-        return console.log("User won, scissors beat paper");
+        console.log("User won, scissors beat paper");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+       
     }
 
     //draw
     else if (userTurn == "ROCK" && computerTurn == "R"){
-        draw = true;
-        return console.log("It's a draw, both chose Rock");
-    }
-    else if (userTurn == "PAPER" && computerTurn == "P"){
-        draw = true;
-        return console.log("It's a draw, both chose Paper");
-    }
-    else if (userTurn == "SCISSORS" && computerTurn == "S"){
-        draw = true;
-        return console.log("It's a draw, both chose Scissors");
-    }
-}
-
-
-
-/* function game() {
-    for (let i = 0; i < 5; i++){
-        gameLogic();
-        console.log(gameLogic());
-        console.log(`The winner of round ${i} is: `);
-    }
-}
- */
-//write a function which says who won, 
-    //set a counter variable
-    //if a pc won, increment pc's variable by 1
-    //if a user wins, increment user's variable by 1
-    //if it's a draw, increment draw's variable by 1
-    //when 5 round is over, whoever has the highest number wins, draw not included when comparing. Comparing just pc and the user
-
-
-/* function game() {
-    let maxRounds = 5;
-    let pc = 0;
-    let user = 0;
-    let draw = 0;
-    for (let i = 0; i < 5; i++) {
-        gameLogic();
+        console.log("It's a draw, both chose Rock");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
         
     }
-} */
+    else if (userTurn == "PAPER" && computerTurn == "P"){
+        console.log("It's a draw, both chose Paper");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
+        
+    }
+    else if (userTurn == "SCISSORS" && computerTurn == "S"){
+        console.log("It's a draw, both chose Scissors");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
+        
+    }
+    else{
+        console.log("Type \"rock\", \"paper\", or \"scissors\"");
+    }
+}
+
+
 function game() {
     let pc = 0;
     let user = 0;
     let drawLocal = 0;
     for (let i = 0; i < 5; i++){
+        computerPlay();
+        userPlay();
         gameLogic()
         if (pcWin == true) pc++;
         else if (userWin == true) user ++;
         else if (draw == true) drawLocal ++;
+        console.log(`${pc}, ${user}, ${drawLocal}`);
     }
     console.log(`${pc}, ${user}, ${drawLocal}`);
 }
