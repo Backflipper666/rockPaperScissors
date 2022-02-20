@@ -107,6 +107,18 @@ function game() {
         else if (draw == true) drawLocal ++;
         console.log(`${pc}, ${user}, ${drawLocal}`);
     }
-    console.log(`${pc}, ${user}, ${drawLocal}`);
+    if (pc > user || pc > drawLocal) {
+        console.log("PC won the 5 round match")
+    }
+    else if (user > pc || user > drawLocal) {
+        console.log("User won the 5 round match")
+    }
+    else if (draw > pc && draw > user) {
+        console.log("It's a draw, congrats to both"); 
+    }
+    else if (pc == user) {
+        console.log("It's a draw");
+    }
+    //console.log(`${pc}, ${user}, ${drawLocal}`);
 }
 game();
