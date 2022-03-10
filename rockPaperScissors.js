@@ -1,3 +1,7 @@
+//greet the user, instruct to choose from 3 buttons
+//when the user presses the button, generate a random choice with computer, compare computer choice with user choice
+//play 5 rounds
+
 let choices = ["Rock", "Paper", "Scissors"];
 function computerPlay() {
     let computerChoice = Math.floor(Math.random() * choices.length);
@@ -123,23 +127,32 @@ function game() {
 }
 gameLogic();
 
+let div = document.createElement('div');
+document.body.appendChild(div);
+div.setAttribute('style', 'display: flex; align-content: space-between; justify-content: center;column-gap: 15px; color: yellow; background-color: #0e1400; padding: 20px;');
+
 const rock = document.createElement('button');
-rock.textContent = "rock";
+rock.textContent = "Rock";
 rock.id = 'rockId';
 
-rock.style["background-color"] = "red";
-document.body.appendChild(rock);
+//rock.setAttribute("style", "padding: 5px;")
+rock.setAttribute('style', 'border-radius: 10px; padding: 5px; background-color: #7fcdff; font-family: helvetica;')
+div.appendChild(rock);
 
 const paper = document.createElement('button');
-paper.textContent = "paper";
+paper.textContent = "Paper";
 paper.id = 'paperId';
-
-paper.style["background-color"] = "green";
-document.body.appendChild(paper);
+paper.setAttribute('style', 'border-radius: 10px; padding: 5px; background-color: #c7e67f; font-family: helvetica;')
+div.appendChild(paper);
 
 const scissors = document.createElement('button');
-scissors.textContent = "scissors";
-scissors.id = 'rockId';
+scissors.textContent = "Scissors";
+scissors.id = 'ScissorsId';
+scissors.setAttribute('style', 'border-radius: 10px; padding: 5px; background-color: pink; font-family: helvetica;')
+div.appendChild(scissors);
 
-scissors.style["background-color"] = "pink";
-document.body.appendChild(scissors);
+let buttonAll = document.querySelectorAll('button');
+
+
+
+
