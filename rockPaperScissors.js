@@ -121,4 +121,25 @@ function game() {
     }
     //console.log(`${pc}, ${user}, ${drawLocal}`);
 }
-game();
+gameLogic();
+
+const rock = document.createElement('button');
+rock.textContent = "rock";
+rock.id = 'rockId';
+
+rock.style["background-color"] = "red";
+document.body.appendChild(rock);
+
+const paper = document.createElement('button');
+paper.textContent = "paper";
+paper.id = 'paperId';
+
+paper.style["background-color"] = "green";
+document.body.appendChild(paper);
+
+const scissors = document.createElement('button');
+scissors.textContent = "scissors";
+scissors.id = 'rockId';
+
+scissors.style["background-color"] = "pink";
+document.body.appendChild(scissors);
