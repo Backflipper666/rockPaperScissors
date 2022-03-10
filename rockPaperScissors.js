@@ -31,9 +31,7 @@ let beautifyButtons = function() {
     
 }
 beautifyButtons();
-//greet the user, instruct to choose from 3 buttons
-//when the user presses the button, generate a random choice with computer, compare computer choice with user choice
-//play 5 rounds
+//assign to each button an event listener of the userPlay(), eg that when clicked rock, return value of the function is ROCK  
 
 let choices = ["Rock", "Paper", "Scissors"];
 function computerPlay() {
@@ -43,22 +41,100 @@ function computerPlay() {
 }
 
 
-function userPlay() {
+
+
     
-    let userInput = prompt("(R) for Rock, (P) for paper and (S) for scissors" );
-    return userInput.toUpperCase();
-    
-}
+
 
 
 let userWin;
 let pcWin;
 let draw;
 
+rock.addEventListener("click",  playRoundRock);
+paper.addEventListener("click", playRoundPaper);
+scissors.addEventListener("click", playRoundScissors)
+
+function playRoundRock() {
+    let userTurn = "ROCK";
+    let computerTurn = computerPlay();
+    if (computerTurn == "P" && userTurn == "ROCK") {
+        console.log("Computer won, paper beats rock");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+    }
+    else if (userTurn == "ROCK" && computerTurn == "S"){
+        console.log("User won! Rock beats scissors");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+    }
+    else if (userTurn == "ROCK" && computerTurn == "R"){
+        console.log("It's a draw, both chose Rock");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
+    }
+}
+
+function playRoundPaper() {
+    let userTurn = "PAPER";
+    let computerTurn = computerPlay();
+    if (computerTurn == "S" && userTurn == "PAPER") {
+        console.log("Computer won, scissors beat paper");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+        
+    }
+    else if (userTurn == "PAPER" && computerTurn == "R"){
+        console.log("User won, paper beats rock");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+        
+    }
+    else if (userTurn == "PAPER" && computerTurn == "P"){
+        console.log("It's a draw, both chose Paper");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
+        
+    }
+}
+
+function playRoundScissors() {
+    let userTurn = "SCISSORS";
+    let computerTurn = computerPlay();
+    if (computerTurn == "R" && userTurn == "SCISSORS") {
+        console.log("Computer won, rock beats scissors");
+        userWin = false;
+        draw = false;
+        return pcWin = true;
+        
+    } 
+    else if (userTurn == "SCISSORS" && computerTurn == "P"){
+        console.log("User won, scissors beat paper");
+        pcWin = false;
+        draw = false;
+        return userWin = true;
+       
+    }
+    else if (userTurn == "SCISSORS" && computerTurn == "S"){
+        console.log("It's a draw, both chose Scissors");
+        pcWin = false;
+        userWin = false;
+        return draw = true;
+        
+    }
+}
+
 function gameLogic() {
 
     let userTurn = userPlay();
     let computerTurn = computerPlay();
+    
 
     //computer wins
     if (computerTurn == "R" && userTurn == "SCISSORS") {
@@ -159,7 +235,8 @@ function game() {
     }
     //console.log(`${pc}, ${user}, ${drawLocal}`);
 }
-gameLogic();
+
+
 
 
 
