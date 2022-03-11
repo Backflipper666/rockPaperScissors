@@ -41,24 +41,126 @@ function computerPlay() {
 }
 
 
-
-
-    
-
-
-
 let userWin;
 let pcWin;
 let draw;
 
-rock.addEventListener("click",  playRoundRock);
-paper.addEventListener("click", playRoundPaper);
-scissors.addEventListener("click", playRoundScissors)
+let playerScore = 0;
+let computerScore = 0;
+
+
+
+
+function playRoundTogether() {
+    rock.addEventListener("click",  (e) => {
+        
+        let userTurn = "ROCK";
+        let computerTurn = computerPlay();
+        
+        if (computerTurn == "P" && userTurn == "ROCK") {
+        
+            console.log("Computer won, paper beats rock");
+            userWin = false;
+            draw = false;
+            computerScore += 1;
+            
+
+        }
+        else if (userTurn == "ROCK" && computerTurn == "S"){
+            console.log("User won! Rock beats scissors");
+            pcWin = false;
+            draw = false;
+            playerScore += 1;
+            return userWin = true;
+        }
+        else if (userTurn == "ROCK" && computerTurn == "R"){
+            console.log("It's a draw, both chose Rock");
+            pcWin = false;
+            userWin = false;
+            return draw = true;
+        }
+        
+
+    });
+    paper.addEventListener("click", (e) => {
+        let userTurn = "PAPER";
+        let computerTurn = computerPlay();
+        if (computerTurn == "S" && userTurn == "PAPER") {
+            console.log("Computer won, scissors beat paper");
+            userWin = false;
+            draw = false;
+            computerScore += 1;
+            
+            
+        }
+        else if (userTurn == "PAPER" && computerTurn == "R"){
+            console.log("User won, paper beats rock");
+            pcWin = false;
+            draw = false;
+            playerScore += 1;
+            
+            
+        }
+        else if (userTurn == "PAPER" && computerTurn == "P"){
+            console.log("It's a draw, both chose Paper");
+            pcWin = false;
+            userWin = false;
+            
+            
+        }
+    });
+    scissors.addEventListener("click", (e) => {
+        let userTurn = "SCISSORS";
+        let computerTurn = computerPlay();
+        
+        if (computerTurn == "R" && userTurn == "SCISSORS") {
+            console.log("Computer won, rock beats scissors");
+            userWin = false;
+            draw = false;
+            computerScore += 1;
+            
+            
+        } 
+        else if (userTurn == "SCISSORS" && computerTurn == "P"){
+            console.log("User won, scissors beat paper");
+            pcWin = false;
+            draw = false;
+            playerScore += 1;
+            
+           
+        }
+        else if (userTurn == "SCISSORS" && computerTurn == "S"){
+            console.log("It's a draw, both chose Scissors");
+            pcWin = false;
+            userWin = false;
+           
+            
+        }
+
+
+        scoreCount();
+        
+    });
+}
+
+
+playRoundTogether();
+function scoreCount() {
+    if (playerScore === 5) {
+        console.log("Player won the match!")
+    }
+    else if (computerScore === 5) {
+        console.log("Computer won the match");
+    }
+}
+
 
 function playRoundRock() {
+    confirm("Do you choose Rock?");
     let userTurn = "ROCK";
     let computerTurn = computerPlay();
     if (computerTurn == "P" && userTurn == "ROCK") {
+        
         console.log("Computer won, paper beats rock");
         userWin = false;
         draw = false;
@@ -129,117 +231,5 @@ function playRoundScissors() {
         
     }
 }
-
-function gameLogic() {
-
-    let userTurn = userPlay();
-    let computerTurn = computerPlay();
-    
-
-    //computer wins
-    if (computerTurn == "R" && userTurn == "SCISSORS") {
-        console.log("Computer won, rock beats scissors");
-        userWin = false;
-        draw = false;
-        return pcWin = true;
-        
-    } 
-    else if (computerTurn == "P" && userTurn == "ROCK") {
-        console.log("Computer won, paper beats rock");
-        userWin = false;
-        draw = false;
-        return pcWin = true;
-        
-    }
-    else if (computerTurn == "S" && userTurn == "PAPER") {
-        console.log("Computer won, scissors beat paper");
-        userWin = false;
-        draw = false;
-        return pcWin = true;
-        
-    }
-
-    //player wins
-    else if (userTurn == "ROCK" && computerTurn == "S"){
-        console.log("User won! Rock beats scissors");
-        pcWin = false;
-        draw = false;
-        return userWin = true;
-        
-    }
-    else if (userTurn == "PAPER" && computerTurn == "R"){
-        console.log("User won, paper beats rock");
-        pcWin = false;
-        draw = false;
-        return userWin = true;
-        
-    }
-    else if (userTurn == "SCISSORS" && computerTurn == "P"){
-        console.log("User won, scissors beat paper");
-        pcWin = false;
-        draw = false;
-        return userWin = true;
-       
-    }
-
-    //draw
-    else if (userTurn == "ROCK" && computerTurn == "R"){
-        console.log("It's a draw, both chose Rock");
-        pcWin = false;
-        userWin = false;
-        return draw = true;
-        
-    }
-    else if (userTurn == "PAPER" && computerTurn == "P"){
-        console.log("It's a draw, both chose Paper");
-        pcWin = false;
-        userWin = false;
-        return draw = true;
-        
-    }
-    else if (userTurn == "SCISSORS" && computerTurn == "S"){
-        console.log("It's a draw, both chose Scissors");
-        pcWin = false;
-        userWin = false;
-        return draw = true;
-        
-    }
-    else{
-        console.log("Type \"rock\", \"paper\", or \"scissors\"");
-    }
-}
-
-
-function game() {
-    let pc = 0;
-    let user = 0;
-    let drawLocal = 0;
-    for (let i = 0; i < 5; i++){
-        gameLogic()
-        if (pcWin == true) pc++;
-        else if (userWin == true) user ++;
-        else if (draw == true) drawLocal ++;
-        console.log(`${pc}, ${user}, ${drawLocal}`);
-    }
-    if (pc > user || pc > drawLocal) {
-        console.log("PC won the 5 round match")
-    }
-    else if (user > pc || user > drawLocal) {
-        console.log("User won the 5 round match")
-    }
-    else if (draw > pc && draw > user) {
-        console.log("It's a draw, congrats to both"); 
-    }
-    else if (pc == user) {
-        console.log("It's a draw");
-    }
-    //console.log(`${pc}, ${user}, ${drawLocal}`);
-}
-
-
-
-
-
-
 
 
